@@ -26,7 +26,7 @@ You've probably written it a dozen times in a dozen different ways - tracking a 
 
 Compose Backbone.Chooser into your models:
 
-```
+```coffee
   class Model extends Backbone.Model
     initialize: ->
       new Backbone.Chooser(@)
@@ -48,35 +48,35 @@ Unchooses the model
 #### model.isChosen()
 returns boolean whether or not your model has been chosen
 
-```
-  model.isChosen() //false
+```coffee
+  model.isChosen() #=> false
   model.choose()
-  model.isChosen() //true
+  model.isChosen() #=> true
 ```
 
 #### model.toggleChosen()
 Toggles between chosen and unchosen
 
-```
+```coffee
   model.toggleChoose()
-  model.isChosen() //true
+  model.isChosen() #=> true
   model.toggleChoose()
-  model.isChosen() //false
+  model.isChosen() #=> false
 ```
 
 ### Model Catalog of Events
 Backbone.Chooser fires events in an easy to use order:
 
-```
-  model.on("all", function(event) { console.log(event) });
+```coffee
+model.on "all", (event) -> console.log event
 
   model.choose()
-  //change
-  //change:chosen
-  //model:chosen
+  #=> change:chosen
+  #=> change
+  #=> model:chosen
 
   model.choose({silent: true})
-  //...crickets...
+  #=> ...crickets...
 ```
 
 If the model is part of a collection, then the collection will also fire its own events.  Read #collection catalog of events
@@ -88,7 +88,7 @@ Collections can support either single choice or multi choice.
 
 #### Single Choice
 
-```
+```coffee
   class Collection extends Backbone.Collection
     initialize: ->
       new Backbone.SingleChooser(@)
@@ -96,7 +96,7 @@ Collections can support either single choice or multi choice.
 
 #### Multi Choice
 
-```
+```coffee
   class Collection extends Backbone.Collection
     initialize: ->
       new Backbone.MultiChooser(@)
