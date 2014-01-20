@@ -1,0 +1,12 @@
+{
+  "name": "Backbone.Chooser",
+  "version": "1.0.0",
+  "repository": "https://github.com/brian-mann/Backbone.Chooser",
+  "devDependencies": {
+    "gulp-util": "~2.2.12",
+    "gulp": "~3.4.0",
+    "gulp-coffee": "~1.2.5",
+    "gulp-uglify": "~0.1.0",
+    "gulp-rename": "~0.2.2"
+  }
+}
