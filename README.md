@@ -105,5 +105,12 @@ class Collection extends Backbone.Collection
 ## API
 Backbone.Chooser works its magic....
 
+## Building
+
+* npm install -g gulp
+* npm install
+* gulp build
+* profit
+
 ## Screencast
 Want to see this this in action?  It's in Episode #08 of [BackboneRails.com - PlanetExpress](http://www.backbonerails.com/series/building_planet_express)
