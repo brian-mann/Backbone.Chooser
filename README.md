@@ -27,9 +27,9 @@ You've probably written it a dozen times in a dozen different ways - tracking a 
 Compose Backbone.Chooser into your models:
 
 ```coffee
-  class Model extends Backbone.Model
-    initialize: ->
-      new Backbone.Chooser(@)
+class Model extends Backbone.Model
+  initialize: ->
+    new Backbone.Chooser(@)
 ```
 Backbone.Chooser will now give your models access to the following methods:
 
@@ -49,19 +49,19 @@ Unchooses the model
 returns boolean whether or not your model has been chosen
 
 ```coffee
-  model.isChosen() #=> false
-  model.choose()
-  model.isChosen() #=> true
+model.isChosen() #=> false
+model.choose()
+model.isChosen() #=> true
 ```
 
 #### model.toggleChosen()
 Toggles between chosen and unchosen
 
 ```coffee
-  model.toggleChoose()
-  model.isChosen() #=> true
-  model.toggleChoose()
-  model.isChosen() #=> false
+model.toggleChoose()
+model.isChosen() #=> true
+model.toggleChoose()
+model.isChosen() #=> false
 ```
 
 ### Model Catalog of Events
@@ -70,13 +70,13 @@ Backbone.Chooser fires events in an easy to use order:
 ```coffee
 model.on "all", (event) -> console.log event
 
-  model.choose()
-  #=> change:chosen
-  #=> change
-  #=> model:chosen
+model.choose()
+#=> change:chosen
+#=> change
+#=> model:chosen
 
-  model.choose({silent: true})
-  #=> ...crickets...
+model.choose({silent: true})
+#=> ...crickets...
 ```
 
 If the model is part of a collection, then the collection will also fire its own events.  Read #collection catalog of events
@@ -89,17 +89,17 @@ Collections can support either single choice or multi choice.
 #### Single Choice
 
 ```coffee
-  class Collection extends Backbone.Collection
-    initialize: ->
-      new Backbone.SingleChooser(@)
+class Collection extends Backbone.Collection
+  initialize: ->
+    new Backbone.SingleChooser(@)
 ```
 
 #### Multi Choice
 
 ```coffee
-  class Collection extends Backbone.Collection
-    initialize: ->
-      new Backbone.MultiChooser(@)
+class Collection extends Backbone.Collection
+  initialize: ->
+    new Backbone.MultiChooser(@)
 ```
 
 ## API
