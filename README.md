@@ -235,8 +235,10 @@ collection.on "collection:chose:none collection:chose:some collection:chose:all"
 #### Notes
 * Same intelligent no-ops and event triggering as SingleChooser
 
-## Building
+## Where are the tests?
+I have them, I promise, just haven't converted them outside of a Rails app yet.... yes I know...
 
+## Building
 * npm install -g gulp
 * npm install
 * gulp build
