@@ -1,8 +1,8 @@
 # Backbone.Chooser
-Track your **selected**, aka **chosen** models and collections with ease.
+Easily track your **selected**, aka **chosen** models and collection.
 
 ### Models
-You can `choose` or `unchoose` your models, and receive easy-to-use events.
+You can `choose` or `unchoose` your models and receive easy-to-use events.
 
 ### Collections
 Allow for tracking and managing which models have been `chosen`.  Simple configuration allows collections to automatically behave as **single** choice or **multiple** choice collections.
@@ -13,7 +13,7 @@ Allow for tracking and managing which models have been `chosen`.  Simple configu
 * Forms - tracking multiple chosen items
 
 ## The Pitch
-You've probably written it a dozen times in a dozen different ways - tracking a "selected" state of your models, or knowing which model within a collection is "selected".  This plugin takes the basic idea from [Derick Bailey's - Backbone.Picky](https://github.com/derickbailey/backbone.picky) but improves the API and events.
+You've probably written it a dozen times in a dozen different ways - tracking a "selected" state of your models, or knowing which model within a collection is "selected".  This plugin takes the basic idea from [Derick Bailey's - Backbone.Picky](https://github.com/derickbailey/backbone.picky) with improvements to the API and events.
 
 ### Key Improvements
 * Non conflicting method names and attributes
@@ -245,4 +245,4 @@ I have them, I promise, just haven't converted them outside of a Rails app yet..
 * profit
 
 ## Screencast
-Want to see this this in action?  It's in Episode #08 of [BackboneRails.com - PlanetExpress](http://www.backbonerails.com/series/building_planet_express)
+Want to see this in action?  It's in Episode #08 of [BackboneRails.com - PlanetExpress](http://www.backbonerails.com/series/building_planet_express)
