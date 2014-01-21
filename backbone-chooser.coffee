@@ -69,13 +69,16 @@ do (Backbone) ->
       return if options.silent is true
 
       event or= @_getEvent()
-      @collection.trigger event, @getChosen()
+      @collection.trigger event, @_eventArg()
 
     chooseById: (id, options = {}) ->
       model = @collection.get(id)
       @choose model, options if model
 
   class Backbone.SingleChooser extends BaseChooser
+    ## return only the first model as the event argument
+    _eventArg: -> @getFirstChosen()
+
     choose: (model, options) ->
       ## return if the model is already chosen
       return if @modelInChosen(model)
@@ -101,6 +104,9 @@ do (Backbone) ->
       super
       @collection[method] = _.bind(@[method], @) for method in ["chooseAll", "chooseNone", "chooseByIds"]
 
+    ## return all of the chosen models as the event argument
+    _eventArg: -> @getChosen()
+
     choose: (args...) ->
       options = if _.chain(args).flatten().last().value() not instanceof Backbone.Model then args.pop() else {}
 
@@ -117,7 +123,6 @@ do (Backbone) ->
         @addModel(model, options)
 
       ## fire event
-      @triggerEvent("collection:chose:any", options) if eventShouldTrigger
       @triggerEvent(false, options) if eventShouldTrigger
 
     unchoose: (args...) ->
@@ -136,7 +141,6 @@ do (Backbone) ->
         @removeModels(model, options)
 
       ## fire event
-      @triggerEvent("collection:unchose:any", options) if eventShouldTrigger
       @triggerEvent(false, options) if eventShouldTrigger
 
     chooseAll: (options = {}) ->
@@ -144,7 +148,6 @@ do (Backbone) ->
 
       @addModel(model) for model in @collection.models
 
-      @triggerEvent("collection:chose:any", options)
       @triggerEvent(false, options)
 
     chooseNone: (options = {}) ->
@@ -152,7 +155,6 @@ do (Backbone) ->
 
       @removeModels()
 
-      @triggerEvent("collection:unchose:any", options)
       @triggerEvent(false, options)
 
     ## chooses models by an array of ids
