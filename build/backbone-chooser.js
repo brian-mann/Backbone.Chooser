@@ -143,7 +143,7 @@ var __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; 
         return;
       }
       event || (event = this._getEvent());
-      return this.collection.trigger(event, this.getChosen());
+      return this.collection.trigger(event, this._eventArg());
     };
 
     BaseChooser.prototype.chooseById = function(id, options) {
@@ -167,6 +167,10 @@ var __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; 
       _ref = SingleChooser.__super__.constructor.apply(this, arguments);
       return _ref;
     }
+
+    SingleChooser.prototype._eventArg = function() {
+      return this.getFirstChosen();
+    };
 
     SingleChooser.prototype.choose = function(model, options) {
       if (this.modelInChosen(model)) {
@@ -201,6 +205,10 @@ var __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; 
       }
     }
 
+    MultiChooser.prototype._eventArg = function() {
+      return this.getChosen();
+    };
+
     MultiChooser.prototype.choose = function() {
       var args, eventShouldTrigger, model, options, _i, _len, _ref1;
       args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
@@ -214,9 +222,6 @@ var __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; 
         }
         eventShouldTrigger || (eventShouldTrigger = true);
         this.addModel(model, options);
-      }
-      if (eventShouldTrigger) {
-        this.triggerEvent("collection:chose:any", options);
       }
       if (eventShouldTrigger) {
         return this.triggerEvent(false, options);
@@ -238,9 +243,6 @@ var __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; 
         this.removeModels(model, options);
       }
       if (eventShouldTrigger) {
-        this.triggerEvent("collection:unchose:any", options);
-      }
-      if (eventShouldTrigger) {
         return this.triggerEvent(false, options);
       }
     };
@@ -258,7 +260,6 @@ var __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; 
         model = _ref1[_i];
         this.addModel(model);
       }
-      this.triggerEvent("collection:chose:any", options);
       return this.triggerEvent(false, options);
     };
 
@@ -270,7 +271,6 @@ var __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; 
         return;
       }
       this.removeModels();
-      this.triggerEvent("collection:unchose:any", options);
       return this.triggerEvent(false, options);
     };
 
