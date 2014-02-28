@@ -43,7 +43,7 @@ do (Backbone) ->
 
       @collection[method] = _.bind(@[method], @) for method in @_publicMethods()
 
-    _publicMethods: -> ["choose", "unchoose", "getChosen", "getFirstChosen", "chooseById"]
+    _publicMethods: -> ["choose", "unchoose", "getChosen", "getFirstChosen", "chooseById", "chooseNone"]
 
     getChosen: ->
       _.toArray @chosen
@@ -74,6 +74,13 @@ do (Backbone) ->
     chooseById: (id, options = {}) ->
       model = @collection.get(id)
       @choose model, options if model
+      
+    chooseNone: (options = {}) ->
+      return if @getChosen().length is 0
+
+      @removeModels()
+
+      @triggerEvent "collection:chose:none", options
 
   class Backbone.SingleChooser extends BaseChooser
     ## return only the first model as the event argument
@@ -102,7 +109,7 @@ do (Backbone) ->
   class Backbone.MultiChooser extends BaseChooser
     constructor: ->
       super
-      @collection[method] = _.bind(@[method], @) for method in ["chooseAll", "chooseNone", "chooseByIds"]
+      @collection[method] = _.bind(@[method], @) for method in ["chooseAll", "chooseByIds"]
 
     ## return all of the chosen models as the event argument
     _eventArg: -> @getChosen()
@@ -150,13 +157,6 @@ do (Backbone) ->
 
       @triggerEvent(false, options)
 
-    chooseNone: (options = {}) ->
-      return if @getChosen().length is 0
-
-      @removeModels()
-
-      @triggerEvent(false, options)
-
     ## chooses models by an array of ids
     ## passing chooseNone as options will
     ## first clear the current chosen
@@ -171,8 +171,5 @@ do (Backbone) ->
     _getEvent: ->
       if @collection.length is @getChosen().length
         return "collection:chose:all"
-
-      if @getChosen().length is 0
-        return "collection:chose:none"
 
       return "collection:chose:some"
