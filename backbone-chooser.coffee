@@ -20,7 +20,7 @@ do (Backbone) ->
 
       @chosen = true
       @model.set chosen: true, options
-      @model.trigger "model:chosen", @model unless options.silent is true
+      @model.trigger "model:chosen", @model, options unless options.silent is true
       @model.collection?.choose?(@model, options)
 
     unchoose: (options = {}) ->
@@ -28,7 +28,7 @@ do (Backbone) ->
 
       @chosen = false
       @model.set chosen: false, options
-      @model.trigger "model:unchosen", @model unless options.silent is true
+      @model.trigger "model:unchosen", @model, options unless options.silent is true
       @model.collection?.unchoose?(@model, options)
 
     toggleChoose: ->
