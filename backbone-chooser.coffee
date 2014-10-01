@@ -112,7 +112,7 @@ do (Backbone) ->
 
       eventShouldTrigger = false
 
-      for model in _([args]).flatten()
+      for model in _([args]).flatten().value()
         ## break if the model is already chosen
         break if @modelInChosen(model)
 
@@ -130,7 +130,7 @@ do (Backbone) ->
 
       eventShouldTrigger = false
 
-      for model in _([args]).flatten()
+      for model in _([args]).flatten().value()
         ## break if the model is already chosen
         break if !@modelInChosen(model)
 
