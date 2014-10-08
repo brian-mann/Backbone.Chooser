@@ -169,10 +169,10 @@ do (Backbone) ->
         @chooseById id, options
 
     _getEvent: ->
-      if @collection.length is @getChosen().length
-        return "collection:chose:all"
-
       if @getChosen().length is 0
         return "collection:chose:none"
+
+      if @collection.length is @getChosen().length
+        return "collection:chose:all"
 
       return "collection:chose:some"
