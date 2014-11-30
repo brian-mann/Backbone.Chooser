@@ -1,0 +1,18 @@
+{
+  "name": "backbone.chooser",
+  "version": "0.0.1",
+  "main": "build/backbone-chooser.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "backbone-chooser.coffee"
+    "gulpfile.js",
+    "*.md",
+    "package.json"
+  ],
+  "keywords": [
+    "backbone",
+    "chooser",
+    "library"
+  ]
+}
