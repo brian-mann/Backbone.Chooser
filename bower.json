@@ -1,0 +1,23 @@
+{
+  "name": "Backbone.Chooser",
+  "version": "0.0.0",
+  "homepage": "https://github.com/SauloSilva/Backbone.Chooser",
+  "authors": [
+    "Brian Mann <brian@backbonerails.com>",
+    "Sam Saccone <sam@samx.it>"
+  ],
+  "description": "Easily track your selected, aka chosen models and collection.",
+  "main": "build/backbone-chooser.js",
+  "keywords": [
+    "backbone",
+    "chooser",
+    "library"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "LICENCE.md",
+    "backbone-chooser.coffee",
+    "README.md"
+  ]
+}
