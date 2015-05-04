@@ -55,7 +55,7 @@ model.choose()
 model.isChosen() #=> true
 ```
 
-#### model.toggleChosen()
+#### model.toggleChose()
 Toggles between chosen and unchosen
 
 ```coffee
