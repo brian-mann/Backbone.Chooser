@@ -31,8 +31,8 @@ do (Backbone) ->
       @model.trigger "model:unchosen", @model unless options.silent is true
       @model.collection?.unchoose?(@model, options)
 
-    toggleChoose: ->
-      if @isChosen() then @unchoose() else @choose()
+    toggleChoose: (options = {}) ->
+      if @isChosen() then @unchoose(options) else @choose(options)
 
   class BaseChooser
     constructor: (collection) ->
